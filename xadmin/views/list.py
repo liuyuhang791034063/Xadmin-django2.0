@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from collections import OrderedDict
 from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
 from django.core.paginator import InvalidPage, Paginator
-from django.urls.exceptions import NoReverseMatch
+from django.urls import NoReverseMatch
 from django.db import models
 from django.http import HttpResponseRedirect
 from django.template.response import SimpleTemplateResponse, TemplateResponse
@@ -225,7 +225,7 @@ class ListAdminView(ModelAdminView):
                     except models.FieldDoesNotExist:
                         pass
                     else:
-                        if isinstance(field.rel, models.ManyToOneRel):
+                        if isinstance(field, models.ManyToOneRel):
                             related_fields.append(field_name)
                 if related_fields:
                     queryset = queryset.select_related(*related_fields)
@@ -544,7 +544,7 @@ class ListAdminView(ModelAdminView):
                 else:
                     item.text = smart_text(value)
             else:
-                if isinstance(f.rel, models.ManyToOneRel):
+                if isinstance(f, models.ManyToOneRel):
                     field_val = getattr(obj, f.name)
                     if field_val is None:
                         item.text = mark_safe("<span class='text-muted'>%s</span>" % EMPTY_CHANGELIST_VALUE)

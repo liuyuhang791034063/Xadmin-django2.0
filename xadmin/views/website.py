@@ -58,7 +58,7 @@ class LoginView(BaseAdminView):
         })
         defaults = {
             'extra_context': context,
-            'redirect_field_name': self.admin_site.name,
+            'current_app': self.admin_site.name,
             'authentication_form': self.login_form or AdminAuthenticationForm,
             'template_name': self.login_template or 'xadmin/views/login.html',
         }

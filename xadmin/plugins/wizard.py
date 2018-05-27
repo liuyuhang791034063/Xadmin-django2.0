@@ -3,7 +3,6 @@ from collections import OrderedDict
 from django import forms
 from django.db import models
 from django.template import loader
-
 try:
     from formtools.wizard.storage import get_storage
     from formtools.wizard.forms import ManagementForm

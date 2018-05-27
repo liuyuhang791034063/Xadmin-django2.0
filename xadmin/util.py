@@ -95,7 +95,6 @@ def vendor(*tags):
             css['screen'] += files
     return Media(css=css, js=js)
 
-
 def lookup_needs_distinct(opts, lookup_path):
     """
     Returns True if 'distinct()' should be used to query the given lookup path.
@@ -344,7 +343,7 @@ def display_for_field(value, field):
         return formats.number_format(value, field.decimal_places)
     elif isinstance(field, models.FloatField):
         return formats.number_format(value)
-    elif isinstance(field.rel, models.ManyToManyRel):
+    elif isinstance(field, models.ManyToManyRel):
         return ', '.join([smart_text(obj) for obj in value.all()])
     else:
         return smart_text(value)

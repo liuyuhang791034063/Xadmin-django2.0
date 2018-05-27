@@ -1,8 +1,7 @@
 from django import forms
 from django.apps import apps
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse
-from django.urls.exceptions import NoReverseMatch
+from django.urls import reverse, NoReverseMatch
 from django.template.context_processors import csrf
 from django.db.models.base import ModelBase
 from django.forms.forms import DeclarativeFieldsMetaclass
